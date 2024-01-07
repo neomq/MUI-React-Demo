@@ -1,9 +1,9 @@
 import { ReactElement, ReactNode, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Header from "./Header";
+import NavDrawer from "./NavDrawer";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import Header from "./Header";
-import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -42,8 +42,23 @@ const SideNavigation = ({ children }: SideNavProps) => {
     setSelectedMenuItem(selected);
   }, [location.pathname]);
 
-  const drawer = (
-    <List>
+  const navItems = (
+    <List
+      sx={{
+        paddingTop: 0,
+        paddingBottom: 0,
+      }}
+    >
+      <ListItem sx={{ height: 64 }}>
+        <ListItemText
+          primary="Build"
+          primaryTypographyProps={{
+            fontSize: 15,
+            fontWeight: "medium",
+            color: "#f9f9f9",
+          }}
+        />
+      </ListItem>
       {menu.map((item) => (
         <ListItem
           key={item.id}
@@ -55,9 +70,33 @@ const SideNavigation = ({ children }: SideNavProps) => {
           }}
           disablePadding
         >
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedMenuItem?.id === item.id}
+            sx={{
+              height: 48,
+              "&.Mui-selected": {
+                color: "#f9f9f9",
+                backgroundColor: "#2e8b57",
+              },
+              "&.Mui-focusVisible": {
+                backgroundColor: "#2e8b57",
+              },
+              ":hover": {
+                backgroundColor: "#112947",
+              },
+              "&.Mui-selected:hover": {
+                backgroundColor: "#2e8b57",
+              },
+            }}
+          >
             <ListItemIcon sx={sideNavStyles.icons}>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.label} />
+            <ListItemText
+              primary={item.label}
+              primaryTypographyProps={{
+                fontWeight: "medium",
+                variant: "body2",
+              }}
+            />
           </ListItemButton>
         </ListItem>
       ))}
@@ -72,40 +111,25 @@ const SideNavigation = ({ children }: SideNavProps) => {
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
           aria-label="mailbox folders"
         >
-          <Drawer
+          <NavDrawer
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
-            ModalProps={{
+            modalProps={{
               keepMounted: true,
             }}
-            sx={{
-              display: { xs: "block", sm: "none" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-                backgroundColor: "#101f33",
-                color: "rgba(255, 255, 255, 0.7)",
-              },
-            }}
+            display={{ xs: "block", sm: "none" }}
           >
-            {drawer}
-          </Drawer>
-          <Drawer
+            {navItems}
+          </NavDrawer>
+
+          <NavDrawer
             variant="permanent"
-            sx={{
-              display: { xs: "none", sm: "block" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-                backgroundColor: "#101f33",
-                color: "rgba(255, 255, 255, 0.7)",
-              },
-            }}
-            open
+            open={true}
+            display={{ xs: "none", sm: "block" }}
           >
-            {drawer}
-          </Drawer>
+            {navItems}
+          </NavDrawer>
         </Box>
       </Stack>
 
@@ -114,7 +138,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
           title={selectedMenuItem?.label}
           handleDrawerToggle={handleDrawerToggle}
         />
-        <Stack style={{ marginTop: "64px" }}>{children}</Stack>
+        <Stack>{children}</Stack>
       </Stack>
     </Stack>
   );
