@@ -1,14 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import Authentication from "../Pages/Authentication";
+//import Authentication from "../Pages/Authentication";
 import Database from "../Pages/Database";
+import Users from "../Pages/Users"
+import PageNotFound from "../Pages/PageNotFound";
 
 const DashboardPages = () => {
   return (
     <Routes>
-      <Route path="/" element={<Authentication />} />
-      <Route path="/authentication" element={<Authentication />} />
+      <Route path="/" element={<PageNotFound />} />
+      {/* <Route path="/authentication" element={<Authentication />} /> */}
+      <Route path="/authentication/users" element={<Users />} />
       <Route path="/database" element={<Database />} />
-      <Route path="*" element={<>Page does not exist</>} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };

@@ -8,37 +8,59 @@ import DnsIcon from '@mui/icons-material/Dns';
 
 export const sideNavItems = [
     {
-        id: 0,
+        id: 1,
         icon: <PeopleIcon />,
         label: 'Authentication',
         route: '/authentication',
+        children: [
+            {
+                id: 10,
+                label: 'Users',
+                route: '/authentication/users'
+            },
+            {
+                id: 11,
+                label: 'Sign-In Method',
+                route: '/authentication/signinmethod'
+            },
+            {
+                id: 12,
+                label: 'Templates',
+                route: '/authentication/templates'
+            },
+            {
+                id: 13,
+                label: 'Usage',
+                route: '/authentication/usage'
+            }
+        ]
     },
     {
-        id: 1,
+        id: 2,
         icon: <DnsIcon />,
         label: 'Database',
         route: '/database',
     },
     {
-        id: 2,
+        id: 3,
         icon: <ImageIcon />,
         label: 'Storage',
         route: '/storage',
     },
     {
-        id: 3,
+        id: 4,
         icon: <PublicIcon />,
         label: 'Hosting',
         route: '/hosting',
     },
     {
-        id: 4,
+        id: 5,
         icon: <SettingsEthernetIcon />,
         label: 'Functions',
         route: '/functions',
     },
     {
-        id: 5,
+        id: 6,
         icon: <SettingsInputComponentIcon />,
         label: 'Machine learning',
         route: '/machine-learning',

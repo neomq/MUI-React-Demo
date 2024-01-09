@@ -18,7 +18,14 @@ type MenuItem = {
   icon: ReactElement<SvgIconProps>;
   label: string;
   route: string;
+  children?: MenuItemChildren[];
 };
+
+type MenuItemChildren = {
+  id: number;
+  label: string;
+  route: string;
+}
 
 type selectedMenuItem = MenuItem | undefined;
 
@@ -29,18 +36,36 @@ interface SideNavProps {
 const SideNavigation = ({ children }: SideNavProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [selectedMenuItem, setSelectedMenuItem] = useState<selectedMenuItem>();
   const menu: MenuItem[] = sideNavItems;
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [selectedMenuItem, setSelectedMenuItem] = useState<selectedMenuItem>(menu[0]);
+  
+  console.log("active sidenav", selectedMenuItem)
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const getSelectedItem = (menu: MenuItem[], path: string) => {
+    return menu.find((item) => {
+      return item.children
+        ? item.children.find((childItem) => childItem.route === path)
+        : item.route === path
+    });
+  }
+
   useEffect(() => {
-    const selected = menu.find((item) => item.route === location.pathname);
+    const selected = getSelectedItem(menu, location.pathname)
     setSelectedMenuItem(selected);
-  }, [location.pathname]);
+  }, [menu, location.pathname]);
+
+  const navigateToPage = ( item: MenuItem ) => {
+    if( item.children ) {
+      navigate(item.children[0].route)
+    } else {
+      navigate(item.route)
+    }
+  }
 
   const navItems = (
     <List
@@ -63,7 +88,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
         <ListItem
           key={item.id}
           onClick={() => {
-            navigate(item.route);
+            navigateToPage(item)
             if (mobileOpen) {
               setMobileOpen(false);
             }
@@ -76,16 +101,16 @@ const SideNavigation = ({ children }: SideNavProps) => {
               height: 48,
               "&.Mui-selected": {
                 color: "#f9f9f9",
-                backgroundColor: "#2e8b57",
+                backgroundColor: "#6B54FF",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#2e8b57",
+                backgroundColor: "#6B54FF",
               },
               ":hover": {
-                backgroundColor: "#112947",
+                backgroundColor: "#181C3F40",
               },
               "&.Mui-selected:hover": {
-                backgroundColor: "#2e8b57",
+                backgroundColor: "#6B54FF",
               },
             }}
           >
@@ -122,7 +147,6 @@ const SideNavigation = ({ children }: SideNavProps) => {
           >
             {navItems}
           </NavDrawer>
-
           <NavDrawer
             variant="permanent"
             open={true}
@@ -133,12 +157,16 @@ const SideNavigation = ({ children }: SideNavProps) => {
         </Box>
       </Stack>
 
-      <Stack>
+      <Stack display="flex" flexGrow={1}>
         <Header
           title={selectedMenuItem?.label}
+          tabs={selectedMenuItem?.children || []}
           handleDrawerToggle={handleDrawerToggle}
         />
-        <Stack>{children}</Stack>
+
+        <Stack>
+          {children}
+        </Stack>
       </Stack>
     </Stack>
   );

@@ -27,7 +27,7 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
         "& .MuiDrawer-paper": {
           boxSizing: "border-box",
           width: drawerWidth,
-          backgroundColor: "#101f33",
+          backgroundColor: "#2A2E56",
           color: "rgba(255, 255, 255, 0.7)",
         },
       }}
@@ -43,27 +43,28 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
           <ListItemButton
             sx={{
               height: 62,
+              backgroundColor: "#181C3F80",
               "&.Mui-selected": {
-                backgroundColor: "#2e8b57",
+                backgroundColor: "#6B54FF",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#2e8b57",
+                backgroundColor: "#6B54FF",
               },
               ":hover": {
-                backgroundColor: "#112947",
+                backgroundColor: "#181C3F40",
               },
             }}
           >
             <ListItemIcon sx={{ fontSize: 20 }}>
-              <LocalFloristIcon sx={{ color: "#f9f9f9" }} />
+              <LocalFloristIcon sx={{ color: "#fff" }} />
             </ListItemIcon>
             <ListItemText
               sx={{ my: 0 }}
               primary="Flower"
               primaryTypographyProps={{
-                fontSize: 20,
+                fontSize: 20, 
                 fontWeight: "medium",
-                color: "#f9f9f9",
+                color: "#fff",
               }}
             />
           </ListItemButton>
@@ -73,19 +74,20 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
           <ListItemButton
             sx={{
               height: 56,
+              backgroundColor: "#181C3F80",
               "&.Mui-selected": {
-                backgroundColor: "#2e8b57",
+                backgroundColor: "#6B54FF",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#2e8b57",
+                backgroundColor: "#6B54FF",
               },
               ":hover": {
-                backgroundColor: "#112947",
+                backgroundColor: "#181C3F40",
               },
             }}
           >
             <ListItemIcon>
-              <Home color="primary" />
+              <Home sx={{ color: "#C6C7CF" }} />
             </ListItemIcon>
             <ListItemText
               sx={{ my: 0 }}
@@ -93,7 +95,6 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
               primaryTypographyProps={{
                 fontSize: 14,
                 fontWeight: "bold",
-                color: "primary",
               }}
             />
           </ListItemButton>
