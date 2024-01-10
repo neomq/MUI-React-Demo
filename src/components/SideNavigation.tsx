@@ -74,13 +74,15 @@ const SideNavigation = ({ children }: SideNavProps) => {
         paddingBottom: 0,
       }}
     >
-      <ListItem sx={{ height: 64 }}>
+      <ListItem sx={{ height: 64, paddingX: 3 }}>
         <ListItemText
           primary="Build"
           primaryTypographyProps={{
-            fontSize: 15,
+            fontSize: 13,
             fontWeight: "medium",
-            color: "#f9f9f9",
+            color: "#f9f9f980",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
           }}
         />
       </ListItem>
@@ -99,6 +101,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
             selected={selectedMenuItem?.id === item.id}
             sx={{
               height: 48,
+              paddingX: 3,
               "&.Mui-selected": {
                 color: "#f9f9f9",
                 backgroundColor: "#6B54FF",
@@ -114,12 +117,20 @@ const SideNavigation = ({ children }: SideNavProps) => {
               },
             }}
           >
-            <ListItemIcon sx={sideNavStyles.icons}>{item.icon}</ListItemIcon>
+            <ListItemIcon sx={{ 
+              color: "inherit",
+              "&.MuiListItemIcon-root": { 
+                minWidth: '32px',
+              }
+            }}>
+              {item.icon}
+            </ListItemIcon>
             <ListItemText
               primary={item.label}
               primaryTypographyProps={{
-                fontWeight: "medium",
-                variant: "body2",
+                fontSize: 14,
+                fontWeight: "normal",
+                letterSpacing: "0.04em",
               }}
             />
           </ListItemButton>
@@ -129,7 +140,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
   );
 
   return (
-    <Stack direction="row">
+    <Stack direction="row" sx={{ width: '100%' }}>
       <Stack>
         <Box
           component="nav"
@@ -140,7 +151,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
-            modalProps={{
+            modalprops={{
               keepMounted: true,
             }}
             display={{ xs: "block", sm: "none" }}
@@ -157,7 +168,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
         </Box>
       </Stack>
 
-      <Stack display="flex" flexGrow={1}>
+      <Stack display="flex" flexGrow={1} sx={{ width: '100%' }}>
         <Header
           title={selectedMenuItem?.label}
           tabs={selectedMenuItem?.children || []}

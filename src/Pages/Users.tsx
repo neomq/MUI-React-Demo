@@ -1,28 +1,23 @@
+import SearchBar from '../components/SearchBar';
 import Typography from "@mui/material/Typography";
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 
 const Users = () => {
   return (
     <Container>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          '& > :not(style)': {
-            marginTop: 5,
-            width: '100%',
-            height: 128,
-            borderRadius: 2,
-          },
-        }}
-      >
-        <Paper>
-          No users for this project.
+      <Box sx={{ marginTop: 5 }}>
+        <Paper elevation={2} sx={{
+          height: '140px',
+          borderRadius: 2,
+        }}>
+          <SearchBar />
+          <Typography variant="body1" mt={3} textAlign="center" color="#647382">
+            No users for this project yet.
+          </Typography>
         </Paper>
-      </Box> 
+      </Box>
     </Container>
   );
 };

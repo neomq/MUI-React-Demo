@@ -14,7 +14,7 @@ interface NavDrawerProps {
   variant: DrawerProps["variant"];
   open: boolean;
   onClose?: () => void;
-  modalProps?: any;
+  modalprops?: any;
   display: any;
   children: ReactNode;
 }
@@ -43,6 +43,7 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
           <ListItemButton
             sx={{
               height: 62,
+              paddingX: 3,
               backgroundColor: "#181C3F80",
               "&.Mui-selected": {
                 backgroundColor: "#6B54FF",
@@ -55,7 +56,14 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
               },
             }}
           >
-            <ListItemIcon sx={{ fontSize: 20 }}>
+            <ListItemIcon
+              sx={{ 
+                fontSize: 20,
+                "&.MuiListItemIcon-root": { 
+                  minWidth: '40px'
+                }
+              }}
+            >
               <LocalFloristIcon sx={{ color: "#fff" }} />
             </ListItemIcon>
             <ListItemText
@@ -74,6 +82,7 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
           <ListItemButton
             sx={{
               height: 56,
+              paddingX: 3,
               backgroundColor: "#181C3F80",
               "&.Mui-selected": {
                 backgroundColor: "#6B54FF",
@@ -86,15 +95,22 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
               },
             }}
           >
-            <ListItemIcon>
-              <Home sx={{ color: "#C6C7CF" }} />
+            <ListItemIcon
+              sx={{ 
+                "&.MuiListItemIcon-root": { 
+                  minWidth: '32px'
+                }
+              }}
+            >
+              <Home fontSize="small" sx={{ color: "#C6C7CF" }} />
             </ListItemIcon>
             <ListItemText
               sx={{ my: 0 }}
               primary="Project Overview"
               primaryTypographyProps={{
                 fontSize: 14,
-                fontWeight: "bold",
+                fontWeight: "normal",
+                letterSpacing: "0.04em",
               }}
             />
           </ListItemButton>

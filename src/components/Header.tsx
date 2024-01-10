@@ -7,12 +7,11 @@ import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box'
 import Badge from '@mui/material/Badge';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import HelpIcon from '@mui/icons-material/Help';
-import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -91,7 +90,7 @@ const Header = (props: HeaderProps) => {
   console.log("tabsData", tabsData)
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "#181C3F" }}>
+    <AppBar position="sticky" sx={{ backgroundColor: "#624BFF" }}>
       <StyledToolbar>
         <IconButton
           color="inherit"
@@ -100,31 +99,34 @@ const Header = (props: HeaderProps) => {
           onClick={handleDrawerToggle}
           sx={{ mr: 2, display: { sm: "none" } }}
         >
-          <MenuIcon />
+          <MenuIcon fontSize="small" />
         </IconButton>
         <Box sx={{ flexGrow: 1 }}></Box>
-        <Button sx={{ color: '#fff' }}>
+        <Button sx={{ color: '#fff', textTransform: 'capitalize', fontWeight: 'normal' }}>
           Docs
         </Button>
-        <IconButton
-          color="inherit"
-          sx={{ marginRight: 2 }}
-        >
+        <IconButton color="inherit">
           <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
+            <NotificationsIcon fontSize="small" />
           </Badge>
         </IconButton>
-        <Divider orientation="vertical" variant="middle" flexItem sx={{ bgcolor: "#f9f9f920" }} />
         <Tooltip title="My Profile">
-          <IconButton color="inherit" sx={{ marginLeft: 2 }}>
-            <AccountCircle />
+          <IconButton sx={{ px: 1, marginLeft: 2 }}>
+            <Avatar
+              src="https://mui.com/static/images/avatar/1.jpg"
+              sx={{ 
+                width: 32,
+                height: 32
+              }}
+            />
           </IconButton>
         </Tooltip>
       </StyledToolbar>
       <Stack direction="row" sx={{
         mt: 1,
+        height: 'fit-content',
         paddingX: 3,
-        paddingBottom: activeTabId ? 1 : 3,
+        paddingBottom: activeTabId ? 0 : 3,
       }}>
           <Typography
             variant="h5"
@@ -134,6 +136,7 @@ const Header = (props: HeaderProps) => {
               fontSize: 26,
               letterSpacing: 0.5,
               flexGrow: 1,
+              width: '140px',
             }}
           >
             {title || "Responsive Header"}
@@ -143,21 +146,31 @@ const Header = (props: HeaderProps) => {
           variant="outlined"
           sx={{
             '&.MuiButton-outlined': {
-              color: '#C0C1CD',
+              display: "block",
+              width: '90px',
+              height: '34px',
+              color: '#dad4ff',
+              fontSize: '13px',
+              fontWeight: 'normal',
+              textTransform: 'none',
               letterSpacing: 1,
-              border: '1px solid #C0C1CD',
+              border: '1px solid #dad4ff',
               borderRadius: '8px',
-              px: 2,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              px: 1,
             },
             '&.MuiButton-outlined:hover': {
-              backgroundColor: '#21254A',
+              color: '#ffffff',
+              border: '1px solid #ffffff',
             },
           }}>
           Web setup
         </Button>
         <IconButton
           color="inherit"
-          sx={{ marginLeft: 2 }}
+          sx={{ marginLeft: 1, py: 0 }}
         >
           <HelpIcon />
         </IconButton>
@@ -172,7 +185,7 @@ const Header = (props: HeaderProps) => {
             mt: 2,
             paddingLeft: 1,
             paddingRight: 3,
-            "& .MuiTab-root": { color: "#C8C9D280", marginX: 2, paddingX: 0, minWidth: "max-content", textTransform: "capitalize", fontWeight: "normal" },
+            "& .MuiTab-root": { color: "#b5aaff", marginX: 2, paddingX: 0, minWidth: "max-content", textTransform: "capitalize", fontWeight: "normal" },
             "& .MuiTabs-indicator": { backgroundColor: "#ffffff" },
             "& .MuiTab-root.Mui-selected": { color: "#ffffff" },
           }}

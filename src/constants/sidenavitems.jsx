@@ -9,7 +9,7 @@ import DnsIcon from '@mui/icons-material/Dns';
 export const sideNavItems = [
     {
         id: 1,
-        icon: <PeopleIcon />,
+        icon: <PeopleIcon fontSize="small"/>,
         label: 'Authentication',
         route: '/authentication',
         children: [
@@ -37,32 +37,32 @@ export const sideNavItems = [
     },
     {
         id: 2,
-        icon: <DnsIcon />,
+        icon: <DnsIcon fontSize="small"/>,
         label: 'Database',
         route: '/database',
     },
     {
         id: 3,
-        icon: <ImageIcon />,
+        icon: <ImageIcon fontSize="small"/>,
         label: 'Storage',
         route: '/storage',
     },
     {
         id: 4,
-        icon: <PublicIcon />,
+        icon: <PublicIcon fontSize="small"/>,
         label: 'Hosting',
         route: '/hosting',
     },
     {
         id: 5,
-        icon: <SettingsEthernetIcon />,
+        icon: <SettingsEthernetIcon fontSize="small"/>,
         label: 'Functions',
         route: '/functions',
     },
     {
         id: 6,
-        icon: <SettingsInputComponentIcon />,
-        label: 'Machine learning',
+        icon: <SettingsInputComponentIcon fontSize="small"/>,
+        label: 'Machine Learning',
         route: '/machine-learning',
     },
 ]
