@@ -19,9 +19,7 @@ const SearchBar = () => {
         borderRadius: "8px 8px 0 0"
     }}>
         <Stack display="flex" direction="row" flexGrow={1}>
-            <IconButton sx={{ marginRight: "4px", padding: 0 }}>
-                <SearchIcon sx={{ color: "#647382" }}/>
-            </IconButton>
+            <SearchIcon sx={{ color: "#647382", paddingTop: "4px" }}/>
             <Input
                 placeholder="Search by email address, phone number, or user UID"
                 fullWidth

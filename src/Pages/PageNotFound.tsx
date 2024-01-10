@@ -1,12 +1,14 @@
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 const PageNotFound = () => {
   return (
     <Stack>
-      <Typography paragraph>
-      Ooops, this page does not exist yet.
-    </Typography>
+       <Alert severity="error">
+        <AlertTitle>Page Not Found</AlertTitle>
+        Oops, looks like this page does not exist yet.
+      </Alert>
     </Stack>
     
   );

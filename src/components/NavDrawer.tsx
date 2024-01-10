@@ -10,12 +10,20 @@ import ListItemText from "@mui/material/ListItemText";
 import LocalFloristIcon from "@mui/icons-material/LocalFlorist";
 import Home from "@mui/icons-material/Home";
 
+type modalprops = {
+  keepMounted: boolean
+}
+
+type display = {
+  xs: string
+  sm: string
+}
 interface NavDrawerProps {
   variant: DrawerProps["variant"];
   open: boolean;
   onClose?: () => void;
-  modalprops?: any;
-  display: any;
+  modalprops?: modalprops;
+  display: display;
   children: ReactNode;
 }
 
