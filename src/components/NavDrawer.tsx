@@ -57,7 +57,7 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
                 backgroundColor: "#6B54FF",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#6B54FF",
+                backgroundColor: "#181C3F40",
               },
               ":hover": {
                 backgroundColor: "#181C3F40",
@@ -96,7 +96,7 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
                 backgroundColor: "#6B54FF",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#6B54FF",
+                backgroundColor: "#181C3F40"
               },
               ":hover": {
                 backgroundColor: "#181C3F40",

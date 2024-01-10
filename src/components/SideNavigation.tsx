@@ -103,13 +103,15 @@ const SideNavigation = ({ children }: SideNavProps) => {
               height: 48,
               paddingX: 3,
               "&.Mui-selected": {
-                color: "#f9f9f9",
+                color: "#ffffff",
                 backgroundColor: "#6B54FF",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#6B54FF",
+                color: "#ffffff",
+                backgroundColor: "#181C3F40",
               },
               ":hover": {
+                color: "#ffffff",
                 backgroundColor: "#181C3F40",
               },
               "&.Mui-selected:hover": {
