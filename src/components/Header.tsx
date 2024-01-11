@@ -90,7 +90,7 @@ const Header = (props: HeaderProps) => {
   console.log("tabsData", tabsData)
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "#624BFF" }}>
+    <AppBar position="sticky" sx={{ backgroundColor: "#624BFF" }} elevation={0}>
       <StyledToolbar>
         <IconButton
           color="inherit"

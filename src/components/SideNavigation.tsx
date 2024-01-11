@@ -108,11 +108,11 @@ const SideNavigation = ({ children }: SideNavProps) => {
               },
               "&.Mui-focusVisible": {
                 color: "#ffffff",
-                backgroundColor: "#181C3F40",
+                backgroundColor: "#1A232F",
               },
               ":hover": {
                 color: "#ffffff",
-                backgroundColor: "#181C3F40",
+                backgroundColor: "#1A232F",
               },
               "&.Mui-selected:hover": {
                 backgroundColor: "#6B54FF",

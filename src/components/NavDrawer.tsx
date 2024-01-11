@@ -35,7 +35,7 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
         "& .MuiDrawer-paper": {
           boxSizing: "border-box",
           width: drawerWidth,
-          backgroundColor: "#2A2E56",
+          backgroundColor: "#1F2938",
           color: "rgba(255, 255, 255, 0.7)",
         },
       }}
@@ -52,15 +52,15 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
             sx={{
               height: 62,
               paddingX: 3,
-              backgroundColor: "#181C3F80",
+              backgroundColor: "#1F2938",
               "&.Mui-selected": {
-                backgroundColor: "#6B54FF",
+                backgroundColor: "#161d27",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#181C3F40",
+                backgroundColor: "#1A232F",
               },
               ":hover": {
-                backgroundColor: "#181C3F40",
+                backgroundColor: "#1A232F",
               },
             }}
           >
@@ -91,26 +91,32 @@ const NavDrawer = ({ children, display, ...rest }: NavDrawerProps) => {
             sx={{
               height: 56,
               paddingX: 3,
-              backgroundColor: "#181C3F80",
+              backgroundColor: "#1F2938",
               "&.Mui-selected": {
+                color: "#ffffff",
                 backgroundColor: "#6B54FF",
               },
               "&.Mui-focusVisible": {
-                backgroundColor: "#181C3F40"
+                backgroundColor: "#1A232F",
               },
               ":hover": {
-                backgroundColor: "#181C3F40",
+                color: "#ffffff",
+                backgroundColor: "#1A232F",
+              },
+              "&.Mui-selected:hover": {
+                backgroundColor: "#6B54FF",
               },
             }}
           >
             <ListItemIcon
               sx={{ 
+                color: "inherit",
                 "&.MuiListItemIcon-root": { 
                   minWidth: '32px'
                 }
               }}
             >
-              <Home fontSize="small" sx={{ color: "#C6C7CF" }} />
+              <Home fontSize="small" />
             </ListItemIcon>
             <ListItemText
               sx={{ my: 0 }}
