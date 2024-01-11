@@ -1,10 +1,7 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Input from '@mui/material/Input';
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from '@mui/icons-material/Search';
-import RefreshSharpIcon from '@mui/icons-material/RefreshSharp';
-import Button from '@mui/material/Button';
+import { Box, Stack, Input, IconButton } from '@mui/material';
+import { Search, RefreshSharp } from '@mui/icons-material';
+import CommonButton from './CommonButton';
+import { buttonStyles } from '../styles/styles';
 
 const SearchBar = () => {
   return (
@@ -19,7 +16,7 @@ const SearchBar = () => {
         borderRadius: "8px 8px 0 0"
     }}>
         <Stack display="flex" direction="row" flexGrow={1}>
-            <SearchIcon sx={{ color: "#647382", paddingTop: "4px" }}/>
+            <Search sx={{ color: "#647382", paddingTop: "4px" }}/>
             <Input
                 placeholder="Search by email address, phone number, or user UID"
                 fullWidth
@@ -31,30 +28,14 @@ const SearchBar = () => {
             />
         </Stack>
         <Stack display="flex" direction="row">
-            <Button
-            size="small"
-            variant="contained"
-            sx={{
-                '&.MuiButton-contained': {
-                width: '90px',
-                height: '36px',
-                fontSize: '13px',
-                fontWeight: 'normal',
-                textTransform: 'none',
-                letterSpacing: 1,
-                borderRadius: '8px',
-                backgroundColor: '#6B54FF',
-                px: 1,
-                },
-                '&.MuiButton-contained:hover': {
-                backgroundColor: '#5c46ec',
-                },
-            }}
-            >
-            Add user
-            </Button>
+            <CommonButton 
+                size="small"
+                variant="contained"
+                sx={buttonStyles.priBtn}
+            > Add User
+            </CommonButton>
             <IconButton sx={{ marginLeft: 1 }}>
-                <RefreshSharpIcon sx={{ color: "#647382" }}/>
+                <RefreshSharp sx={{ color: "#647382" }}/>
             </IconButton>
         </Stack>
     </Box>

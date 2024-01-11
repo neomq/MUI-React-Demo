@@ -1,29 +1,13 @@
-import { useState, useEffect } from "react"
-import { useNavigate, useLocation } from "react-router-dom";
-import Typography from "@mui/material/Typography";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import AppBar from "@mui/material/AppBar";
-import IconButton from "@mui/material/IconButton";
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box'
-import Badge from '@mui/material/Badge';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import HelpIcon from '@mui/icons-material/Help';
-import Stack from '@mui/material/Stack';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { styled } from "@mui/material/styles";
+import { useState, useEffect, SyntheticEvent } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
+import { Stack, Typography, Toolbar, AppBar, Button, IconButton, Box, Badge, Tabs, Tab } from "@mui/material"
+import { Menu, Notifications, Help } from "@mui/icons-material"
+import CommonButton from "./CommonButton"
+import ProfileMenu from "./ProfileMenu"
+import { styled } from "@mui/material/styles"
+import { MenuItemChildren, clickEvent } from "../types/types"
+import { buttonStyles } from "../styles/styles"
 
-type clickEvent = React.MouseEvent<HTMLAnchorElement, MouseEvent>
-
-type MenuItemChildren = {
-  id: number | string;
-  label: string;
-  route: string;
-}
 interface HeaderProps {
   title?: string
   tabs?: MenuItemChildren[]
@@ -69,7 +53,7 @@ const Header = (props: HeaderProps) => {
     }
   }, [tabsData, location.pathname]);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (event: SyntheticEvent, newValue: number) => {
     setActiveTabId(newValue);
   };
 
@@ -99,28 +83,18 @@ const Header = (props: HeaderProps) => {
           onClick={handleDrawerToggle}
           sx={{ mr: 2, display: { sm: "none" } }}
         >
-          <MenuIcon fontSize="small" />
+          <Menu fontSize="small" />
         </IconButton>
         <Box sx={{ flexGrow: 1 }}></Box>
         <Button sx={{ color: '#fff', textTransform: 'capitalize', fontWeight: 'normal' }}>
           Docs
         </Button>
         <IconButton color="inherit">
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon fontSize="small" />
+          <Badge badgeContent={5} color="error">
+            <Notifications fontSize="small" />
           </Badge>
         </IconButton>
-        <Tooltip title="My Profile">
-          <IconButton sx={{ px: 1, marginLeft: 2 }}>
-            <Avatar
-              src="https://mui.com/static/images/avatar/1.jpg"
-              sx={{ 
-                width: 32,
-                height: 32
-              }}
-            />
-          </IconButton>
-        </Tooltip>
+        <ProfileMenu />
       </StyledToolbar>
       <Stack direction="row" sx={{
         mt: 1,
@@ -141,38 +115,17 @@ const Header = (props: HeaderProps) => {
           >
             {title || "Responsive Header"}
           </Typography>
-        <Button
-          size="small"
-          variant="outlined"
-          sx={{
-            '&.MuiButton-outlined': {
-              display: "block",
-              width: '90px',
-              height: '34px',
-              color: '#dad4ff',
-              fontSize: '13px',
-              fontWeight: 'normal',
-              textTransform: 'none',
-              letterSpacing: 1,
-              border: '1px solid #dad4ff',
-              borderRadius: '8px',
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              px: 1,
-            },
-            '&.MuiButton-outlined:hover': {
-              color: '#ffffff',
-              border: '1px solid #ffffff',
-            },
-          }}>
-          Web setup
-        </Button>
+        <CommonButton
+         size="small"
+         variant="outlined"
+         sx={buttonStyles.outlineBtnLight}
+        > Web setup
+        </CommonButton>
         <IconButton
           color="inherit"
           sx={{ marginLeft: 1, py: 0 }}
         >
-          <HelpIcon />
+          <Help />
         </IconButton>
       </Stack>
       
@@ -185,7 +138,14 @@ const Header = (props: HeaderProps) => {
             mt: 2,
             paddingLeft: 1,
             paddingRight: 3,
-            "& .MuiTab-root": { color: "#b5aaff", marginX: 2, paddingX: 0, minWidth: "max-content", textTransform: "capitalize", fontWeight: "normal" },
+            "& .MuiTab-root": { 
+              color: "#b5aaff",
+              marginX: 2,
+              paddingX: 0,
+              minWidth: "max-content",
+              textTransform: "capitalize",
+              fontWeight: "normal" 
+            },
             "& .MuiTabs-indicator": { backgroundColor: "#ffffff" },
             "& .MuiTab-root.Mui-selected": { color: "#ffffff" },
           }}

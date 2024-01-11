@@ -1,15 +1,21 @@
 // SideNav Items
-import PeopleIcon from '@mui/icons-material/People';
-import ImageIcon from '@mui/icons-material/Image';
-import PublicIcon from '@mui/icons-material/Public';
-import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
-import DnsIcon from '@mui/icons-material/Dns';
+import { 
+    People,
+    Image,
+    Public,
+    SettingsEthernet,
+    SettingsInputComponent,
+    Dns, 
+    AutoGraph,
+    StarBorder,
+    Settings,
+    Logout
+} from '@mui/icons-material'
 
 export const sideNavItems = [
     {
         id: 1,
-        icon: <PeopleIcon fontSize="small"/>,
+        icon: <People fontSize="small"/>,
         label: 'Authentication',
         route: '/authentication',
         children: [
@@ -37,32 +43,55 @@ export const sideNavItems = [
     },
     {
         id: 2,
-        icon: <DnsIcon fontSize="small"/>,
+        icon: <Dns fontSize="small"/>,
         label: 'Database',
         route: '/database',
     },
     {
         id: 3,
-        icon: <ImageIcon fontSize="small"/>,
+        icon: <Image fontSize="small"/>,
         label: 'Storage',
         route: '/storage',
     },
     {
         id: 4,
-        icon: <PublicIcon fontSize="small"/>,
+        icon: <Public fontSize="small"/>,
         label: 'Hosting',
         route: '/hosting',
     },
     {
         id: 5,
-        icon: <SettingsEthernetIcon fontSize="small"/>,
+        icon: <SettingsEthernet fontSize="small"/>,
         label: 'Functions',
         route: '/functions',
     },
     {
         id: 6,
-        icon: <SettingsInputComponentIcon fontSize="small"/>,
+        icon: <SettingsInputComponent fontSize="small"/>,
         label: 'Machine Learning',
         route: '/machine-learning',
+    },
+]
+
+export const profileMenu = [
+    {
+        icon: <AutoGraph fontSize="small"/>,
+        label: 'Analytics',
+        route: '/analytics'
+    },
+    {
+        icon: <StarBorder fontSize="small"/>,
+        label: 'Go PRO',
+        route: '/pro'
+    },
+    {
+        icon: <Settings fontSize="small"/>,
+        label: 'Settings',
+        route: 'settings'
+    },
+    {
+        icon: <Logout fontSize="small"/>,
+        label: 'Log Out',
+        route: '/login'
     },
 ]

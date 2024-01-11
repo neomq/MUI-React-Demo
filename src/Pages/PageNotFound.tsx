@@ -1,6 +1,4 @@
-import Stack from "@mui/material/Stack";
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
+import { Stack, Alert, AlertTitle } from "@mui/material"
 
 const PageNotFound = () => {
   return (

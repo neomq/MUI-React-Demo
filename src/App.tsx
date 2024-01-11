@@ -1,5 +1,5 @@
 import "./App.css";
-import DashboardLanding from "./Pages/DashboardLanding";
+import DashboardLanding from "./pages/DashboardLanding";
 
 function App() {
   return <DashboardLanding />

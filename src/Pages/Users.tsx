@@ -1,8 +1,5 @@
 import SearchBar from '../components/SearchBar';
-import Typography from "@mui/material/Typography";
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
+import { Typography, Container, Paper, Box } from "@mui/material";
 
 const Users = () => {
   return (

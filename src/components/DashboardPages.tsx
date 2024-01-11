@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Database from "../Pages/Database";
-import Users from "../Pages/Users"
-import PageNotFound from "../Pages/PageNotFound";
+import Database from "../pages/Database";
+import Users from "../pages/Users"
+import PageNotFound from "../pages/PageNotFound";
 
 const DashboardPages = () => {
   return (

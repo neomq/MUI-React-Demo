@@ -1,33 +1,11 @@
-import { ReactElement, ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Stack, Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { sideNavItems } from "../data/data";
+import { sideNavStyles } from "../styles/styles";
+import { MenuItem, selectedMenuItem } from "../types/types"
 import Header from "./Header";
 import NavDrawer from "./NavDrawer";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { SvgIconProps } from "@mui/material";
-import { sideNavItems } from "../constants/sidenavitems";
-import { sideNavStyles, drawerWidth } from "../styles/sidenavigation";
-
-type MenuItem = {
-  id: number;
-  icon: ReactElement<SvgIconProps>;
-  label: string;
-  route: string;
-  children?: MenuItemChildren[];
-};
-
-type MenuItemChildren = {
-  id: number;
-  label: string;
-  route: string;
-}
-
-type selectedMenuItem = MenuItem | undefined;
 
 interface SideNavProps {
   children: ReactNode;
@@ -39,6 +17,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
   const menu: MenuItem[] = sideNavItems;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<selectedMenuItem>(menu[0]);
+  const { drawerWidth, menuHeaderText, menuItemBtn, navItemIcon, navItemText } = sideNavStyles
   
   console.log("active sidenav", selectedMenuItem)
 
@@ -67,73 +46,34 @@ const SideNavigation = ({ children }: SideNavProps) => {
     }
   }
 
+  const handleItemClick = (item: MenuItem) => {
+    navigateToPage(item)
+    if (mobileOpen) {
+      setMobileOpen(false);
+    }
+  }
+
   const navItems = (
-    <List
-      sx={{
-        paddingTop: 0,
-        paddingBottom: 0,
-      }}
-    >
+    <List sx={{ p: 0 }}>
       <ListItem sx={{ height: 64, paddingX: 3 }}>
-        <ListItemText
-          primary="Build"
-          primaryTypographyProps={{
-            fontSize: 13,
-            fontWeight: "medium",
-            color: "#f9f9f980",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-          }}
-        />
+        <ListItemText primary="Build" primaryTypographyProps={menuHeaderText}/>
       </ListItem>
       {menu.map((item) => (
         <ListItem
           key={item.id}
-          onClick={() => {
-            navigateToPage(item)
-            if (mobileOpen) {
-              setMobileOpen(false);
-            }
-          }}
+          onClick={() => handleItemClick(item)}
           disablePadding
         >
           <ListItemButton
             selected={selectedMenuItem?.id === item.id}
-            sx={{
-              height: 48,
-              paddingX: 3,
-              "&.Mui-selected": {
-                color: "#ffffff",
-                backgroundColor: "#6B54FF",
-              },
-              "&.Mui-focusVisible": {
-                color: "#ffffff",
-                backgroundColor: "#1A232F",
-              },
-              ":hover": {
-                color: "#ffffff",
-                backgroundColor: "#1A232F",
-              },
-              "&.Mui-selected:hover": {
-                backgroundColor: "#6B54FF",
-              },
-            }}
+            sx={menuItemBtn}
           >
-            <ListItemIcon sx={{ 
-              color: "inherit",
-              "&.MuiListItemIcon-root": { 
-                minWidth: '32px',
-              }
-            }}>
+            <ListItemIcon sx={navItemIcon}>
               {item.icon}
             </ListItemIcon>
             <ListItemText
               primary={item.label}
-              primaryTypographyProps={{
-                fontSize: 14,
-                fontWeight: "normal",
-                letterSpacing: "0.04em",
-              }}
+              primaryTypographyProps={navItemText}
             />
           </ListItemButton>
         </ListItem>
@@ -176,7 +116,6 @@ const SideNavigation = ({ children }: SideNavProps) => {
           tabs={selectedMenuItem?.children || []}
           handleDrawerToggle={handleDrawerToggle}
         />
-
         <Stack>
           {children}
         </Stack>
