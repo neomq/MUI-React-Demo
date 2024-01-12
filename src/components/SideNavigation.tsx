@@ -18,8 +18,31 @@ const SideNavigation = ({ children }: SideNavProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<selectedMenuItem>(menu[0]);
   const { drawerWidth, menuHeaderText, menuItemBtn, navItemIcon, navItemText } = sideNavStyles
-  
+
   console.log("active sidenav", selectedMenuItem)
+
+  const getHeaderTitle = (activeNav: selectedMenuItem) => {
+    const isProfilePage = location.pathname === '/profile'
+    const isLandingPage = location.pathname === '/'
+
+    let title: string | undefined = ""
+    switch (true) {
+      case isProfilePage:
+        title = "My Profile"
+        break;
+      case isLandingPage:
+        title = "Overview"
+        break;
+      case (activeNav !== undefined):
+        title = activeNav?.label
+        break;
+      default:
+        title = ""
+    }
+    return title
+  }
+
+  const headerTitle = getHeaderTitle(selectedMenuItem)
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -112,7 +135,7 @@ const SideNavigation = ({ children }: SideNavProps) => {
 
       <Stack display="flex" flexGrow={1} sx={{ width: '100%' }}>
         <Header
-          title={selectedMenuItem?.label}
+          title={headerTitle}
           tabs={selectedMenuItem?.children || []}
           handleDrawerToggle={handleDrawerToggle}
         />

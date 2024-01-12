@@ -27,12 +27,9 @@ const SearchBar = () => {
                 disableUnderline
             />
         </Stack>
-        <Stack display="flex" direction="row">
-            <CommonButton 
-                size="small"
-                variant="contained"
-                sx={buttonStyles.priBtn}
-            > Add User
+        <Stack display="flex" direction="row" alignItems="center">
+            <CommonButton size="small" variant="contained" style="primaryBtn"> 
+                Add User
             </CommonButton>
             <IconButton sx={{ marginLeft: 1 }}>
                 <RefreshSharp sx={{ color: "#647382" }}/>

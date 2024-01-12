@@ -2,11 +2,13 @@ import { Fragment, useState } from 'react'
 import { Avatar, Menu, IconButton } from '@mui/material';
 import ProfileMenuItems from './ProfileMenuItems';
 import { profileMenuStyle } from '../styles/styles';
+import { userProfile } from '../data/data';
 
 const ProfileMenu = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const { profileMenu } = profileMenuStyle
+    const { photo } = userProfile
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -26,7 +28,7 @@ const ProfileMenu = () => {
                 aria-expanded={open ? 'true' : undefined}
             >
                 <Avatar
-                    src="https://mui.com/static/images/avatar/1.jpg"
+                    src={photo}
                     sx={{
                         width: 30,
                         height: 30,

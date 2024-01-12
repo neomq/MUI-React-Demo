@@ -6,7 +6,6 @@ import CommonButton from "./CommonButton"
 import ProfileMenu from "./ProfileMenu"
 import { styled } from "@mui/material/styles"
 import { MenuItemChildren, clickEvent } from "../types/types"
-import { buttonStyles } from "../styles/styles"
 
 interface HeaderProps {
   title?: string
@@ -113,13 +112,10 @@ const Header = (props: HeaderProps) => {
               width: '140px',
             }}
           >
-            {title || "Responsive Header"}
+            {title}
           </Typography>
-        <CommonButton
-         size="small"
-         variant="outlined"
-         sx={buttonStyles.outlineBtnLight}
-        > Web setup
+        <CommonButton size="small" variant="outlined" style="outlineBtnLight">
+          Web setup
         </CommonButton>
         <IconButton
           color="inherit"

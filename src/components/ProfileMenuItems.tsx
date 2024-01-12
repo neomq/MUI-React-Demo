@@ -1,6 +1,7 @@
 import { List, ListItemIcon, ListItemButton, ListItemText, Divider } from '@mui/material'
+import { useNavigate } from "react-router-dom";
 import { profileMenuStyle } from '../styles/styles';
-import { profileMenu } from '../data/data';
+import { profileMenu, userProfile } from '../data/data';
 
 interface ProfileMenuItemsProps {
     handleClose: () => void
@@ -15,14 +16,20 @@ const ProfileMenuItems = ({ handleClose }: ProfileMenuItemsProps) => {
         navItemIcon,
         navItemText
     } = profileMenuStyle
+    const { firstName, lastName } = userProfile
+    const navigate = useNavigate();
 
     return (
         <List disablePadding>
-            <ListItemButton sx={profileHeaderBtn}>
+            <ListItemButton
+                sx={profileHeaderBtn}
+                onClick={() => navigate('/profile')}
+                disableRipple
+            >
                 <ListItemText
-                    primary="Christopher Robinson"
+                    primary={`${firstName} ${lastName}`}
                     primaryTypographyProps={profileHeaderTextPri}
-                    secondary="View Profile"
+                    secondary="View My Profile"
                     secondaryTypographyProps={profileHeaderTextSec}
                     sx={{ my: 0 }}
                 />
