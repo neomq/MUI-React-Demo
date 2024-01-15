@@ -37,6 +37,7 @@ const ProfileCard = () => {
 					zIndex: 2,
 					left: 24,
 					transform: 'translate(0, -32%)',
+					border: '4px solid white',
 				}}
 			/>
 			<CardContent sx={{ "&.MuiCardContent-root": { pb: 4 } }}>
