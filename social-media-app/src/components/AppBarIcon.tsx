@@ -7,7 +7,7 @@ interface AppBarIconProps {
 const AppBarIcon = ({ icon }: AppBarIconProps) => {
     return (
         <Box sx={{ background: "#FAFCFF", width: "40px", height: "40px", borderRadius: 8, display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <Badge badgeContent={4} color="error">
+            <Badge badgeContent={2} color="error">
                 {icon}
             </Badge>
         </Box>

@@ -1,20 +1,14 @@
-import { Box, AvatarGroup, Avatar, List, ListItem, ListSubheader } from "@mui/material"
-import { cardStyle } from '../styles/styles'
+import { Box, AvatarGroup, Avatar, ListItem } from "@mui/material"
+import ListWrapper from "./Wrapper/ListWrapper"
 
 const FeaturedContent = () => {
-  const listStyle = {...cardStyle}
-  listStyle.paddingBottom = 3
 
   return (
     <Box
       p={2}
       sx={{ display: { xs: "none", md: "block" }}}>
-      <List sx={listStyle} subheader={
-        <ListSubheader component="div" id="nested-list-subheader" sx={{ pt: "8px", pl: "32px", borderRadius: "8px" }}>
-          Online
-        </ListSubheader>
-      }>
 
+      <ListWrapper title="online" pb={3}>
         <ListItem sx={{ px: 4 }}>
           <AvatarGroup max={5}>
             <Avatar alt="Remy Sharp" src="https://mui.com/static/images/avatar/1.jpg" />
@@ -27,7 +21,7 @@ const FeaturedContent = () => {
             <Avatar alt="Cindy Baker" src="https://mui.com/static/images/avatar/3.jpg" />
           </AvatarGroup>
         </ListItem>
-        </List>
+        </ListWrapper>
 
     </Box>
   )

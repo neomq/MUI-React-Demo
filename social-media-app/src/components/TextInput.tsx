@@ -31,10 +31,10 @@ const TextInput = ({ icon, width, width_sm, placeholder }: TextInputProps) => {
                 sx={{
                     fontSize: "14px",
                     width: "100%",
-                    color: "#8095B3",
+                    color: "#3C445B",
                     ".MuiInputBase-input::placeholder": {
                         opacity: .6,
-                        color: "#8095B3"
+                        color: "#3C4A71"
                     }
                 }}
             />
