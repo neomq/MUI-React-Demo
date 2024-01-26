@@ -33,7 +33,7 @@ const TextInput = ({ icon, width, width_sm, placeholder }: TextInputProps) => {
                     width: "100%",
                     color: "#3C445B",
                     ".MuiInputBase-input::placeholder": {
-                        opacity: .6,
+                        opacity: .7,
                         color: "#3C4A71"
                     }
                 }}
